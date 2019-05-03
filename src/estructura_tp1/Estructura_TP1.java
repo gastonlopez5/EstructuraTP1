@@ -110,6 +110,8 @@ public class Estructura_TP1 {
         LocalDate fechaNacimiento;
         LocalDate fechaActual = LocalDate.now();
         int edad;
+        int mes;
+        int dia;
         
         try{
             System.out.println("Ingresar fecha de nacimiento dd/mm/aaaa: ");
@@ -117,7 +119,13 @@ public class Estructura_TP1 {
             fechaNacimiento = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         
             edad = fechaActual.getYear() - fechaNacimiento.getYear();
-            System.out.println("Usted tiene: "+ edad);
+            
+            if (fechaActual.getDayOfYear() >= fechaNacimiento.getDayOfYear()){
+                System.out.println("Usted tiene: "+ edad);
+            }else{
+                edad -= 1;
+                System.out.println("Usted tiene: " + edad);
+            }
         }catch (DateTimeParseException ex){
             System.out.println("Error en el formato con el que ingresó la fecha.");
         }
