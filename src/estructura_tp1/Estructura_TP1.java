@@ -20,30 +20,84 @@ public class Estructura_TP1 {
         // TODO code application logic here
         
         // Punto 1
+//        Scanner sc = new Scanner(System.in);
+//        Integer edades[] = new Integer[3];
+//        int resultado = 0;
+//        int aux;
+//        
+//        System.out.println("Ingrese la primer edad: ");
+//        aux = sc.nextInt();
+//        edades[0] = aux;
+//        
+//        System.out.println("Ingrese la segunda edad: ");
+//        aux = sc.nextInt();
+//        edades[1] = aux;
+//        
+//        System.out.println("Ingrese la tercera edad: ");
+//        aux = sc.nextInt();
+//        edades[2] = aux;
+//        
+//        for (int i=0; i<edades.length; i++){
+//            if (edades[i] > resultado){
+//                resultado = edades[i];
+//            }
+//        }
+//        
+//        System.out.println("La edad más alta es: "+ resultado);
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        // Punto 2
         Scanner sc = new Scanner(System.in);
-        Integer edades[] = new Integer[3];
-        int resultado = 0;
-        int aux;
+        Double lados[] = new Double[3];
+        Double lados1[] = new Double[3];
+        int aux = 0;
         
-        System.out.println("Ingrese la primer edad: ");
-        aux = sc.nextInt();
-        edades[0] = aux;
+        System.out.println("Ingrese las 3 longitudes de los lados de un triángulo: ");
+        lados[0] = sc.nextDouble();
+        lados[1] = sc.nextDouble();
+        lados[2] = sc.nextDouble();
         
-        System.out.println("Ingrese la segunda edad: ");
-        aux = sc.nextInt();
-        edades[1] = aux;
+        lados1 = lados.clone();
         
-        System.out.println("Ingrese la tercera edad: ");
-        aux = sc.nextInt();
-        edades[2] = aux;
-        
-        for (int i=0; i<edades.length; i++){
-            if (edades[i] > resultado){
-                resultado = edades[i];
+        if ((lados[0]+lados[1] > lados[2]) && (lados[0]+lados[2] > lados[1]) && (lados[2]+lados[1] > lados[0])){
+            
+            for (int j=0; j<lados.length; j++){
+                double a = lados[j];
+                for (int i=0; i<lados.length; i++){
+                    double b = lados1[i];
+                    if (a == b){
+                        aux += 1;
+                    }
+                }
             }
-        }
+            
+            System.out.println("aux= " + aux);
+            
+            switch (aux){
+                case 3:
+                    System.out.println("Es un triangulo escaleno");
+                    aux = 0;
+                    break;
+                    
+                case 5:
+                    System.out.println("Es un triangulo isoceles");
+                    aux = 0;
+                    break;
+                
+                case 9:
+                    System.out.println("Es un triangulo equilátero");
+                    aux = 0;
+                    break;
+                
+                default:
+                    break;
+            }
         
-        System.out.println("La edad más alta es: "+ resultado);
+        }else{
+            System.out.println("No es posible formar un triángulo con los tres lados ingresados");
+        } 
+        
     }
     
 }
